@@ -1,6 +1,6 @@
-Mini-Workshop
+# Mini-Workshop
 
-Requirements:
+## Requirements:
 Java 8+
 
 On Windows use gradlew.bat instead of ./gradlew
@@ -8,15 +8,15 @@ On Windows use gradlew.bat instead of ./gradlew
 There are too projects: provider and consumer, each in it separate directory.
 Start gradlew commands from inside the appropriate projject.
 
-Try to do following steps:
+## Exploration of Pact
 
-Provider
+### Provider
 1. Start provider with ./gradlew bootRun
 2. Check that provider is running, with Postman/curl or any other API tool. Request http://localhost:8888/weather/now/city=Berlin and observe the JSON response.
 3. Stop the provider (Ctrl+C)
 
 
-Consumer:
+### Consumer
 1. Inspect Consumer method which call the provider: Controller.weatherNow(...)
 2. Inspect PactWeatherTest class, especially createPact() and unitTestCustomerMethod()
 3. Create Pact and test customer with: ./gradlew test
@@ -27,7 +27,7 @@ Consumer:
 8. Leave a single test method with empty content - observed that the test fails (Pact interaction is described, but not called/tested)
 9. Make Pact test pass again
 
-Provider:
+### Provider
 1. Uncomment code in build.gradle (inspect it)
 2. Run ./gradlew verifyPact - it should fail (provider is not started)
 3. Start the provider in separated session (./gradlew bootRun)
@@ -38,7 +38,8 @@ Provider:
 8. Change configuration annotations values (folder, provider name)  to fail the test, observe the error messages.
 9. Return everything back to passing test
 
-Provider: (you may verify with ./gradlew clean 	verifyPact or with ./gradlew clean test)
+### Provider
+(you can verify with ./gradlew clean 	verifyPact or with ./gradlew clean test)
 1. Change format of Provider response - in class Weather rename zipCode property/methods
 2. Verify pact - it must be passing (change doesn't make pact invalid)
 3. Change format of Provider response - in class Weather rename city property/methods
