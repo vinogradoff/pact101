@@ -41,12 +41,12 @@ public class Weather {
     this.date = date;
   }
 
-  public String getTown() {
+  public String getCity() {
 
     return city;
   }
 
-  public void setTown(String city) {
+  public void setCity(String city) {
     this.city = city;
   }
 }
