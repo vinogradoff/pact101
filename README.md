@@ -39,7 +39,7 @@ Start gradlew commands from inside the appropriate projject.
 9. Return everything back to passing test
 
 ### Provider
-(you can verify with `./gradlew clean verifyPact` or with `./gradlew clean test`)
+Note: You can verify with either `./gradlew clean verifyPact` or with `./gradlew clean test`. When test fails, look for explaining messages in gradle HTML reports.
 1. Change format of Provider response - in class `Weather` rename `zipCode` property/methods
 2. Verify pact - it must be passing (change doesn't make pact invalid)
 3. Change format of Provider response - in class `Weather` rename `city` property/methods
