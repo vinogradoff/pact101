@@ -3,7 +3,7 @@
 ## Requirements:
 Java 8+
 
-On Windows use gradlew.bat instead of ./gradlew
+On Windows use `gradlew.bat` instead of `./gradlew`
 
 There are too projects: provider and consumer, each in it separate directory.
 Start gradlew commands from inside the appropriate projject.
