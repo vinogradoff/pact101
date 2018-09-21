@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.0.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+
+//uncomment to verify with gradle plugin: gradle pactVerify
+/*    id "au.com.dius.pact" version "3.5.21" */
+}
+
+bootJar {
+    baseName = 'weather-rest-service'
+    version =  '1.0.0'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.2.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+    testImplementation "au.com.dius:pact-jvm-provider-junit5_2.12:3.5.21"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+//uncomment to verify with gradle plugin: gradle pactVerify
+/*
+pact {
+
+    serviceProviders {
+
+        // You can define as many as you need, but each must have a unique name
+        weather_service_provider {
+            // All the provider properties are optional, and have sensible defaults (shown below)
+            protocol = 'http'
+            host = 'localhost'
+            port = 8888
+            //path = '/'
+
+            // Again, you can define as many consumers for each provider as you need, but each must have a unique name
+            hasPactWith('weather portal') {
+
+                // currently supports a file path using file() or a URL using url()
+                pactSource = file('../consumer/target/pacts/weather_portal-weather_service.json')
+
+            }
+
+
+        }
+    }
+}
+*/
