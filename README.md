@@ -12,7 +12,7 @@ Start gradlew commands from inside the appropriate projject.
 
 ### Provider
 1. Start provider with `./gradlew bootRun`
-2. Check that provider is running, with Postman/curl or any other API tool. Request http://localhost:8888/weather/now/city=Berlin and observe the JSON response.
+2. Check that provider is running, with Postman/curl or any other API tool. Request http://localhost:8888/weather/now and observe the JSON response.
 3. Stop the provider (Ctrl+C)
 
 
