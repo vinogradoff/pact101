@@ -1,11 +1,12 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.0.4.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
 
 //uncomment to verify with gradle plugin: gradle pactVerify
-/*    id "au.com.dius.pact" version "3.5.21" */
+/*    id "au.com.dius.pact" version "3.6.2" */
 }
+
+apply plugin: 'io.spring.dependency-management'
 
 bootJar {
     baseName = 'weather-rest-service'
@@ -23,9 +24,9 @@ targetCompatibility = 1.8
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.2.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
-    testImplementation "au.com.dius:pact-jvm-provider-junit5_2.12:3.5.21"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+    testImplementation "au.com.dius:pact-jvm-provider-junit5_2.12:3.6.2"
 }
 
 test {
