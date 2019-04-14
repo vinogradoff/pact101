@@ -8,7 +8,8 @@ import static org.assertj.core.api.Assertions.*;
 public class IntegrationTest {
 
  @Test
-  void weatherPortalShouldReturn(){
+ void weatherPortalShouldReturn(){
+  // e2e Test
   Weather weather=get("http://localhost:8080/newsportal/getWeather?city=Minsk")
           .then()
           .statusCode(200)
@@ -19,6 +20,16 @@ public class IntegrationTest {
 
  }
 
+ @Test
+ void weatherServiceShouldReturn(){
+  Weather weather=get("http://localhost:8888/weather/now?city=Boston")
+          .then()
+          .statusCode(200)
+          .extract().as(Weather.class);
+
+  assertThat(weather.getCity()).isEqualTo("Boston");
+  assertThat(weather.getTemperature()).isGreaterThan(0);
+ }
 
  @Test
  void providerAPIshouldReturn(){

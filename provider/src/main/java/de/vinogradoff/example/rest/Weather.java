@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Weather {
 
+  public Weather(){}
+
   private String city;
   private String zipCode;
   private Double temperature;
@@ -42,7 +44,6 @@ public class Weather {
   }
 
   public String getCity() {
-
     return city;
   }
 
