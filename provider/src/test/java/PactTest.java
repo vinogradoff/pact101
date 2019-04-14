@@ -1,7 +1,7 @@
 import au.com.dius.pact.provider.junit.Provider;
 import au.com.dius.pact.provider.junit.loader.PactFolder;
 import au.com.dius.pact.provider.junit5.*;
-import de.vinogradoff.example.rest.Application;
+import de.vinogradoff.example.rest.ApplicationProvider;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +23,7 @@ public class PactTest {
     //Run DB, create schema
     //Run service
     //...
-    SpringApplication.run(Application.class, new String[]{});
+    SpringApplication.run(ApplicationProvider.class, new String[]{});
   }
 
   @BeforeEach

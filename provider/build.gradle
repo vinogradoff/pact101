@@ -9,8 +9,8 @@ plugins {
 apply plugin: 'io.spring.dependency-management'
 
 bootJar {
-    baseName = 'weather-rest-service'
-    version =  '1.0.0'
+    archiveBaseName = 'weather-rest-service'
+    archiveVersion =  '1.0.0'
 }
 
 
