@@ -23,6 +23,10 @@ public class Weather {
 
   }
 
+  public Weather(String city, Double temperature){
+    this.city=city;
+    this.temperature=temperature;
+  }
   public Double getTemperature() {
     return temperature;
   }
