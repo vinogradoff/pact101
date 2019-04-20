@@ -9,8 +9,8 @@ import org.springframework.boot.SpringApplication;
 import java.net.*;
 
 @Provider("weather_service")
-@PactFolder("../consumer/target/pacts")
-public class PactTest {
+@PactFolder("../consumer/build/pact-files")
+public class PactProviderVerificationTest {
 
   @TestTemplate
   @ExtendWith(PactVerificationInvocationContextProvider.class)

@@ -7,6 +7,7 @@ import io.pactfoundation.consumer.dsl.LambdaDsl;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
+import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -18,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(PactConsumerTestExt.class)
 @PactTestFor(providerName = "weather_service")
 @PactFolder("build/pact-files")
-public class PactWeatherTest {
+public class PactConsumerWeatherTest {
 
   Map<String, String> headers = MapUtils.putAll(new HashMap<String, String>(),
           new String[]{"Content-Type", "application/json"});

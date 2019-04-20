@@ -36,4 +36,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    
+    // don't merge with existing pact file, always overwrite.
+    // this should work starting with 3.6.5 
+    systemProperty "pact.writer.overwrite",true
 }
