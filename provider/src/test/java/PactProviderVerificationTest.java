@@ -1,7 +1,9 @@
 import au.com.dius.pact.provider.junit.Provider;
+import au.com.dius.pact.provider.junit.State;
 import au.com.dius.pact.provider.junit.loader.PactFolder;
 import au.com.dius.pact.provider.junit5.*;
 import de.vinogradoff.example.rest.ApplicationProvider;
+import de.vinogradoff.example.rest.Controller;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.SpringApplication;
@@ -31,6 +33,16 @@ public class PactProviderVerificationTest {
     context.setTarget(HttpTestTarget.fromUrl(new URL("http://localhost:8888")));
     // or something like
     // context.setTarget(new HttpTestTarget("localhost", myProviderPort, "/"));
+  }
+
+  @State("Sensors are functioning")
+  void setupApplicationOK(){
+    Controller.offline=false;
+  }
+
+  @State("Sensors are down")
+  void setupApplication503(){
+    Controller.offline=true;
   }
 }
 

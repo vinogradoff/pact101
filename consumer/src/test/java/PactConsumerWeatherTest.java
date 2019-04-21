@@ -28,6 +28,7 @@ public class PactConsumerWeatherTest {
   public RequestResponsePact createPact(PactDslWithProvider builder) {
 
     return builder
+            .given("Sensors are functioning")
             .uponReceiving("Request the weather conditions for location")
             .path("/weather/now")
             .method("GET")
@@ -46,6 +47,14 @@ public class PactConsumerWeatherTest {
                       o.decimalType("temperature",29.2d);
                     }).build()
             )
+            .given("Sensors are down")
+            .uponReceiving("Request the weather conditions for location")
+            .path("/weather/now")
+            .method("GET")
+            .matchQuery("city", ".*", "Moscow")
+            .willRespondWith()
+            .headers(headers)
+            .status(503)
             .toPact();
   }
 
