@@ -1,5 +1,4 @@
-import au.com.dius.pact.provider.junit.Provider;
-import au.com.dius.pact.provider.junit.State;
+import au.com.dius.pact.provider.junit.*;
 import au.com.dius.pact.provider.junit.loader.PactFolder;
 import au.com.dius.pact.provider.junit5.*;
 import de.vinogradoff.example.rest.ApplicationProvider;
@@ -37,12 +36,17 @@ public class PactProviderVerificationTest {
 
   @State("Sensors are functioning")
   void setupApplicationOK(){
-    Controller.offline=false;
+    //Controller.offline=false;
   }
 
   @State("Sensors are down")
   void setupApplication503(){
     Controller.offline=true;
+  }
+
+  @State(value = "Sensors are down", action = StateChangeAction.TEARDOWN)
+  void cleanUp503(){
+    Controller.offline=false;
   }
 }
 
