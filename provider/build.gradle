@@ -33,8 +33,20 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured:3.3.0'
 }
 
+project.version="0.0.3"
+def getGitHashForLastCommit = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'rev-parse', '--short', 'HEAD'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
 test {
     useJUnitPlatform()
+    systemProperty "pact.provider.version","${project.version}-${getGitHashForLastCommit()}"
+    systemProperty "pact.verifier.publishResults",true
 }
 
 //uncomment to verify with gradle plugin: gradle pactVerify

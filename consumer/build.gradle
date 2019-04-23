@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.1.4.RELEASE'
     id 'java'
+    id "au.com.dius.pact" version "3.6.5"
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -36,8 +37,33 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    
+
     // don't merge with existing pact file, always overwrite.
-    // this should work starting with 3.6.5 
+    // this should work starting with 3.6.5
     systemProperty "pact.writer.overwrite",true
+}
+
+project.version="0.1.0"
+
+def getGitHashForLastCommit = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'rev-parse', '--short', 'HEAD'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
+
+pact {
+
+    publish {
+        pactDirectory = 'build/pact-files' // defaults to $buildDir/pacts
+        pactBrokerUrl = 'https://comaqa.pact.dius.com.au/'
+        pactBrokerUsername = pactBrokerUser
+        pactBrokerPassword = pactBrokerPwd
+        version="${project.version}-${getGitHashForLastCommit()}"
+
+    }
+
 }
